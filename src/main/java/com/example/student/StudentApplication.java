@@ -1,5 +1,8 @@
 package com.example.student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,5 +38,13 @@ public class StudentApplication {
 	@GetMapping("/searchstudent")
 	public String searchStudent(@RequestParam String name, @RequestParam(defaultValue = "1") int age) {
 		return "Tên: " + name + ", tuổi: " + age;
+	}
+
+	@GetMapping("/studentall")
+	public List<Student> getStudents() {
+		List<Student> list = new ArrayList<>();
+		list.add(new Student(1, "A", 20));
+		list.add(new Student(2, "B", 21));
+		return list;
 	}
 }
